@@ -1,0 +1,34 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: kushti_db
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - kushti_net
+
+  wordpress:
+    image: wordpress:latest
+    container_name: kushti_wordpress
+    restart: unless-stopped
+    depends_on:
+      - db
+    env_file:
+      - .env
+    ports:
+      - "127.0.0.1:8081:80"
+    volumes:
+      - wordpress_data:/var/www/html
+    networks:
+      - kushti_net
+
+volumes:
+  db_data:
+  wordpress_data:
+
+networks:
+  kushti_net:
+    driver: bridge
