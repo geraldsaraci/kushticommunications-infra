@@ -9,3 +9,4 @@ WordPress infrastructure deployed on Hetzner using Docker Compose, Nginx reverse
 - Nginx reverse proxy on host
 - Cloudflare DNS
 - GitHub Actions deployment pipeline
+CI/CD test completed.
